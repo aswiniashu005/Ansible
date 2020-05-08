@@ -1,0 +1,16 @@
+  - name: Install python-pip library  # prerequisite for ubuntu machines #
+    apt: name='{{item}}'
+    with_items:
+     - python-pip
+     - python-dev
+  - name: Install python-boto library
+    pip: name=boto
+  - name: Create AWS Instances
+    ec2:                         # Change the key, image, region as per your account #
+     key_name: "wezva"
+     instance_type: "t2.micro"
+     image: "ami-c58c1dd3"
+     wait: true
+     region: "us-east-1"
+
+
